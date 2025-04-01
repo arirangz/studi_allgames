@@ -10,7 +10,7 @@ $games = getAllGames();
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col">
             <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-                <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Les derniers jeux</h1>
+                <h1 class="sm:w-2/5 text-white font-medium title-font text-3xl mb-2 sm:mb-0">Liste des jeux</h1>
             </div>
         </div>
         <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">

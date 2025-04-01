@@ -10,3 +10,10 @@ function getAllGames():array
     ];
     return $games;
 }
+
+function getGame(int $id):array
+{
+    $games = getAllGames();
+
+    return $games[$id];
+}
