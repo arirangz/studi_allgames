@@ -1,7 +1,9 @@
 <?php 
-
+require_once "libs/session.php";
 require_once "libs/game.php";
 require_once "templates/header.php";
+
+var_dump($_SESSION);
 
 $games = getAllGames();
 ?>
