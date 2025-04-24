@@ -1,19 +1,32 @@
 <?php
 
 
-function getAllGames():array
+function getAllGames(PDO $pdo, ?int $limit = null):array
 {
-    $games= [
-        ["name" => "Spider-Man 2", "description" => "Incarnez le célèbre super-héros dans une nouvelle aventure pleine d'action. Balancez-vous à travers la ville..."],
-        ["name" => "Like a Dragon: Infinite Wealth", "description" => "Explorez un monde ouvert rempli de possibilités et de défis. Incarnez un héros et affrontez..."],
-        ["name" => "Starfield", "description" => "Partez à la découverte des étoiles dans ce jeu de rôle et d'action futuriste. Explorez des planètes inconnues, interagissez avec des factions spatiales..."],
-    ];
-    return $games;
+    $sql = "SELECT g.id, g.name, g.description, g.release_date 
+            FROM game g
+            ORDER BY g.release_date DESC";
+    if ($limit) {
+        $sql .= " LIMIT :limit";
+    }
+    $query = $pdo->prepare($sql);
+    if ($limit) {
+        $query->bindValue(':limit', $limit, PDO::PARAM_INT);
+    }
+    $query->execute();
+    
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getGame(int $id):array
+function getGame(PDO $pdo, int $id):array|bool
 {
-    $games = getAllGames();
-
-    return $games[$id];
+    $sql = "SELECT g.id, g.name, g.description, g.release_date, e.name as editor_name
+    FROM game g
+    LEFT JOIN editor e ON e.id = g.editor_id
+    WHERE g.id = :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    
+    return $query->fetch(PDO::FETCH_ASSOC);
 }

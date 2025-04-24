@@ -1,9 +1,10 @@
 <?php 
 require_once "libs/session.php";
+require_once "libs/pdo.php";
 require_once "libs/game.php";
 require_once "templates/header.php";
 
-$games = getAllGames();
+$games = getAllGames($pdo);
 ?>
 
 <section class="text-gray-400 bg-gray-900 body-font">

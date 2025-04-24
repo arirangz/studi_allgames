@@ -4,6 +4,10 @@ require_once "libs/pdo.php";
 require_once "libs/user.php";
 require_once "templates/header.php"; 
 
+if (isLoggedIn()) {
+    header("Location: index.php");
+}
+
 $errors = [];
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
     

@@ -1,11 +1,11 @@
 <?php 
+require_once "libs/settings.php";
 require_once "libs/session.php";
+require_once "libs/pdo.php";
 require_once "libs/game.php";
 require_once "templates/header.php";
 
-var_dump($_SESSION);
-
-$games = getAllGames();
+$games = getAllGames($pdo, LATEST_GAMES_LIMIT);
 ?>
 
 <section class="text-gray-400 bg-gray-900 body-font">
