@@ -17,9 +17,9 @@
             </a>
             <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                 <a href="jeux.php" class="mr-5 hover:text-white">Liste des jeux</a>
-                <a class="mr-5 hover:text-white">Second Link</a>
-                <a class="mr-5 hover:text-white">Third Link</a>
-                <a class="mr-5 hover:text-white">Fourth Link</a>
+                <?php if (isLoggedIn()): ?>
+                <a href="ma_liste.php" class="mr-5 hover:text-white">Ma liste</a>
+                <?php endif; ?>
             </nav>
 
             <?php if (isLoggedIn()): ?>
